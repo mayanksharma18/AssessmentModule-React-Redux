@@ -31,3 +31,16 @@
     transform: rotate(360deg);
   }
 }
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+.correct{
+  background-color: lightgreen 
+}
