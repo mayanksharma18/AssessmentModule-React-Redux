@@ -5,6 +5,7 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import LinearProgress from "@material-ui/core/LinearProgress";
 import {questions} from './Data'
+import Modal from './Modal'
 import {
   Card,
   CardActions,
@@ -50,9 +51,10 @@ const styles = theme => ({
 class Quiz extends React.Component {
   state = {
     currentSelection: "",
-    result: "",
+    result:null,
     count: 0,
-    completed: 0
+    completed: 0,
+    right:5
   };
   componentDidMount(){
     
@@ -65,6 +67,7 @@ class Quiz extends React.Component {
       currentSelection: value
     });
   };
+
   handleSubmit = e => {
     e.preventDefault();
 
@@ -75,7 +78,8 @@ class Quiz extends React.Component {
       });
     } else {
       this.setState({
-        result: false
+        result: false,
+        right:this.state.right-1
       });
     }
   };
@@ -83,7 +87,7 @@ class Quiz extends React.Component {
     console.log("Hi");
     this.setState({
       currentSelection: "",
-      result: false,
+      result:null,
       count: this.state.count + 1
     });
   };
@@ -148,24 +152,7 @@ class Quiz extends React.Component {
                 </form>
               </Paper>
             </div>
-            {/* );
-            }) */}
-            {this.state.result && (
-              <Paper className={classes.root} elevation={1}>
-                <Typography variant="h5" component="h3">
-                  Right Answer!
-                </Typography>
-                <Button
-                  onClick={this.nextQuestion}
-                  variant="contained"
-                  color="primary"
-                  className={classes.button}
-                >
-                  Next Question
-                  {/* This Button uses a Font Icon, see the installation instructions in the docs. */}
-                </Button>
-              </Paper>
-            )}
+            {this.state.result==null?false:this.state.result ? <Modal desc={questions[index].description} data={this.state.result} next={this.nextQuestion}/>:<Modal desc={questions[index].description} data={this.state.result} next={this.nextQuestion}/>}
           </CardContent>
         </Card>
       </div>

@@ -8,6 +8,7 @@ export const questions = [
         "User-interface framework",
         "None of the above"
       ],
+      description:"asasasasasssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
       right: "A Library for building interaction interfaces"
     },
     {
@@ -19,12 +20,14 @@ export const questions = [
         "freeup resources",
         "none of the options"
       ],
+      description:"asasasasas",
       right: "freeup resources"
     },
     {
       id: 3,
       question: "React considers everything as ?",
       answer: ["User interface", "elements", "components", "Objects"],
+      description:"asasasasas",
       right: "components"
     },
     {
@@ -36,6 +39,7 @@ export const questions = [
         " Both of the above",
         "None of the above"
       ],
+      description:"asasasasas",
       right:
         "Webservices uses HTTP methods to implement the concept of REST architecture"
     },
@@ -48,6 +52,7 @@ export const questions = [
         "All of the above",
         "Builds fast and scalable network Applications"
       ],
+      description:"asasasasas",
       right: "Builds fast and scalable network Applications"
     }
   ];
