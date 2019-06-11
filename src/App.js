@@ -28,8 +28,8 @@ class App extends Component {
     console.log(this.props)
   return (
    <div>
-    
-     <Router >
+    <Quiz/>
+     {/* <Router >
      <Link to='/'>home</Link>
      <Link to='/form'>form</Link>
      <Link to='/all'>All</Link>
@@ -38,7 +38,7 @@ class App extends Component {
         <Route path='/form' component={Form}/>
         <Route path='/all' component={Allquestions}/>
         </Switch>
-        </Router>
+        </Router> */}
    </div>
   )
 }

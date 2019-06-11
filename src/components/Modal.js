@@ -52,33 +52,24 @@ const DialogContent = withStyles(theme => ({
 
 const DialogActions = withStyles(theme => ({
   root: {
+    alignSelf: "center",
     margin: 0,
     padding: "20px"
   }
 }))(MuiDialogActions);
-
 class Modal extends React.Component {
   state = {
     open: this.props.data
   };
-
-  //   handleClickOpen = () => {
-  //     this.setState({
-  //       open: true,
-  //     });
-  //   };
-
   render() {
     return (
       <div>
-        {/* <Button variant="outlined" color="secondary" onClick={this.handleClickOpen}>
-          Open dialog
-        </Button> */}
         {this.state.open ? (
-          <Dialog open={this.state.open}>
+          <Dialog  open={this.state.open}>
             <DialogTitle bool={this.state.open}>Right Answer</DialogTitle>
             <CssBaseline />
             <DialogContent dividers>
+            <Typography variant='h5' gutterBottom>Explaination</Typography>
               <Typography gutterBottom>{this.props.desc}</Typography>
             </DialogContent>
             <DialogActions>
@@ -88,7 +79,7 @@ class Modal extends React.Component {
             </DialogActions>
           </Dialog>
         ) : (
-          <Dialog open={!this.state.open}>
+          <Dialog  open={!this.state.open}>
             <DialogTitle
               style={{
                 background: "linear-gradient(to right, #333333, #dd1818)"
@@ -98,6 +89,7 @@ class Modal extends React.Component {
             </DialogTitle>
             <CssBaseline />
             <DialogContent dividers>
+            <Typography variant='h5' gutterBottom>Explaination</Typography>
               <Typography gutterBottom>{this.props.desc}</Typography>
             </DialogContent>
             <DialogActions>

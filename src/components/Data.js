@@ -8,7 +8,7 @@ export const questions = [
         "User-interface framework",
         "None of the above"
       ],
-      description:"asasasasasssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
+      description:"ReactJS basically is an open-source JavaScript library which is used for building user interfaces specifically for single page applications. It’s used for handling view layer for web and mobile apps",
       right: "A Library for building interaction interfaces"
     },
     {
@@ -20,14 +20,14 @@ export const questions = [
         "freeup resources",
         "none of the options"
       ],
-      description:"asasasasas",
+      description:"UI component in a web browser, each of these takes birth, grows by getting updates and dies.The lifecycle methods are various methods which are invoked at different phases of the lifecycle of a component",
       right: "freeup resources"
     },
     {
       id: 3,
       question: "React considers everything as ?",
       answer: ["User interface", "elements", "components", "Objects"],
-      description:"asasasasas",
+      description:"A React component is a bit of code that represents a piece of the page. Each component is a JavaScript function that returns a piece of code that represents a piece of a web page.",
       right: "components"
     },
     {
@@ -39,7 +39,7 @@ export const questions = [
         " Both of the above",
         "None of the above"
       ],
-      description:"asasasasas",
+      description:"REST stands for REpresentational State Transfer. REST is web standards based architecture and uses HTTP Protocol. It revolves around resource where every component is a resource and a resource is accessed by a common interface using HTTP standard methods",
       right:
         "Webservices uses HTTP methods to implement the concept of REST architecture"
     },
@@ -52,7 +52,7 @@ export const questions = [
         "All of the above",
         "Builds fast and scalable network Applications"
       ],
-      description:"asasasasas",
+      description:"Node.js is a platform built on Chrome's JavaScript runtime for easily building fast and scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices.",
       right: "Builds fast and scalable network Applications"
     }
   ];
