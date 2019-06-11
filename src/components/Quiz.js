@@ -90,7 +90,14 @@ class Quiz extends React.Component {
       count: this.state.count + 1
     });
   };
+ 
+  retake=()=>{
+    this.setState({
+    count:0,
+    completed: 0,
+    });
 
+  }
   render() {
     document.body.style.background =
       "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,212,255,1) 0%, rgba(4,26,236,1) 66%)";
@@ -101,7 +108,7 @@ class Quiz extends React.Component {
     return (
       <div>
         {this.state.count == 5 ? (
-          <ImgMediaCard score={this.state.right} />
+          <ImgMediaCard retake={this.retake}score={this.state.right} />
         ) : (
           <Card className={classes.card}>
             <div>

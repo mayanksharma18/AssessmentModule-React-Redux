@@ -65,11 +65,13 @@ class Modal extends React.Component {
     return (
       <div>
         {this.state.open ? (
-          <Dialog  open={this.state.open}>
+          <Dialog open={this.state.open}>
             <DialogTitle bool={this.state.open}>Right Answer</DialogTitle>
             <CssBaseline />
             <DialogContent dividers>
-            <Typography variant='h5' gutterBottom>Explaination</Typography>
+              <Typography variant="h5" gutterBottom>
+                Explaination
+              </Typography>
               <Typography gutterBottom>{this.props.desc}</Typography>
             </DialogContent>
             <DialogActions>
@@ -79,7 +81,7 @@ class Modal extends React.Component {
             </DialogActions>
           </Dialog>
         ) : (
-          <Dialog  open={!this.state.open}>
+          <Dialog open={!this.state.open}>
             <DialogTitle
               style={{
                 background: "linear-gradient(to right, #333333, #dd1818)"
@@ -89,7 +91,9 @@ class Modal extends React.Component {
             </DialogTitle>
             <CssBaseline />
             <DialogContent dividers>
-            <Typography variant='h5' gutterBottom>Explaination</Typography>
+              <Typography variant="h5" gutterBottom>
+                Explaination
+              </Typography>
               <Typography gutterBottom>{this.props.desc}</Typography>
             </DialogContent>
             <DialogActions>

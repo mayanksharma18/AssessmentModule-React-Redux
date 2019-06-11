@@ -28,18 +28,9 @@ class App extends Component {
     console.log(this.props)
   return (
    <div>
+     
     <Quiz/>
-     {/* <Router >
-     <Link to='/'>home</Link>
-     <Link to='/form'>form</Link>
-     <Link to='/all'>All</Link>
-       <Switch>
-        <Route exact path='/' component={Quiz}/>
-        <Route path='/form' component={Form}/>
-        <Route path='/all' component={Allquestions}/>
-        </Switch>
-        </Router> */}
-   </div>
+   </div> 
   )
 }
 }
