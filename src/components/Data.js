@@ -16,12 +16,12 @@ export const questions = [
       question: "Lifecycle methods are mainly used ?",
       answer: [
         "To keep track of event history",
-        "to enhance components",
-        "freeup resources",
+        "To enhance components",
+        "To Free up resources",
         "none of the options"
       ],
       description:"UI component in a web browser, each of these takes birth, grows by getting updates and dies.The lifecycle methods are various methods which are invoked at different phases of the lifecycle of a component",
-      right: "freeup resources"
+      right: "To Free up resources"
     },
     {
       id: 3,
@@ -34,21 +34,21 @@ export const questions = [
       id: 4,
       question: " Which of the following is true about RESTful web services ?",
       answer: [
-        "Webservices based on REST Architecture are known as RESTful web services",
-        "Webservices uses HTTP methods to implement the concept of REST architecture",
+        "Web services based on REST Architecture are known as RESTful web services",
+        "Web services uses HTTP methods to implement the concept of REST architecture",
         " Both of the above",
         "None of the above"
       ],
       description:"REST stands for REpresentational State Transfer. REST is web standards based architecture and uses HTTP Protocol. It revolves around resource where every component is a resource and a resource is accessed by a common interface using HTTP standard methods",
       right:
-        "Webservices uses HTTP methods to implement the concept of REST architecture"
+        "Web services uses HTTP methods to implement the concept of REST architecture"
     },
     {
       id: 5,
       question: "What are the key features of Node.js ?",
       answer: [
         "Real time Data intensive",
-        "A langaHighly scalable servers for Web Applications",
+        "A language Highly scalable servers for Web Applications",
         "All of the above",
         "Builds fast and scalable network Applications"
       ],

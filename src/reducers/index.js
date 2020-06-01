@@ -1,11 +1,8 @@
-import questions from "../components/Data";
-
-const intialState={
+const initialState={
   questions : []
 }
 
-function reducer(state=intialState,action){
-    console.log(action)
+function reducer(state = initialState, action){
     const {payload}=action
     console.log(payload)
     switch(action.type){
