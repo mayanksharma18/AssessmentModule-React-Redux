@@ -26,13 +26,13 @@ const styles = {
 const useComponentDidMount = onMountHandler => {
   React.useEffect(() => {
     onMountHandler()
-  },[]);
+  });
 }
 
 const useComponentWillUnmount = onUnmountHandler => {
   React.useEffect(() => () => {
     onUnmountHandler()
-  }, []);
+  });
 }
 
 function ImgMediaCard(props) {
@@ -43,7 +43,7 @@ function ImgMediaCard(props) {
   }
 
   useComponentWillUnmount(() => document.getElementsByClassName('header')[0].style.removeProperty('display'))
-  
+
   if (props.score >= 3) {
     document.body.style.background =
       'linear-gradient(to right, #11998e, #38ef7d)';
