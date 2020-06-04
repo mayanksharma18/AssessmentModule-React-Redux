@@ -1,12 +1,12 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { fetchData } from '../actions/action';
+import { fetchData } from '../../actions/action';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import LinearProgress from '@material-ui/core/LinearProgress';
-import { questions } from './Data';
-import Modal from './Modal';
-import ImgMediaCard from './Results';
+import { questions } from '../Data';
+import Modal from '../Modal';
+import ImgMediaCard from '../Results';
 import {
   Card,
   CardContent,
@@ -96,7 +96,6 @@ class Quiz extends React.Component {
 
   render() {
     document.body.style.background = 'linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%)';
-    // document.body.style.background= 'linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,212,255,1) 0%, rgba(4,26,236,1) 66%)'
     const index = this.state.count;
     const { classes } = this.props;
     return (

@@ -11,9 +11,9 @@ import {
   CardActions
 } from "@material-ui/core";
 import StarIcon from "@material-ui/icons/StarBorder";
-import Toolbar from "@material-ui/core/Toolbar";
-import Link from "@material-ui/core/Link";
 import { makeStyles } from "@material-ui/core/styles";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import { blue } from "@material-ui/core/colors";
 import images from "../../utils/imageStore";
 
 const useStyles = makeStyles(theme => ({
@@ -86,42 +86,30 @@ const languages = [
     image: `${images.node}`
   }
 ];
-const footers = [
+const paths = [
   {
-    title: "Company",
-    description: ["Team", "History", "Contact us", "Locations"]
+    title: "React",
+    path: "/quiz/react"
   },
   {
-    title: "Features",
-    description: [
-      "Cool stuff",
-      "Random feature",
-      "Team feature",
-      "Developer stuff",
-      "Another one"
-    ]
+    title: "JavaScript",
+    path: "/quiz/javascript"
   },
   {
-    title: "Resources",
-    description: [
-      "Resource",
-      "Resource name",
-      "Another resource",
-      "Final resource"
-    ]
-  },
-  {
-    title: "Legal",
-    description: ["Privacy policy", "Terms of use"]
+    title: "Node.Js",
+    path: "/quiz/nodejs"
   }
 ];
 
-export default function Pricing() {
+export default function Main(props) {
+  const changeUrl = lang => {
+    const pathName = paths.filter(i => i.title === lang.title);
+    props.history.push(`${pathName[0].path}`);
+  };
   const classes = useStyles();
-
   return (
     <React.Fragment>
-      {/* Hero unit */}
+      {/* Main Title */}
       <Container maxWidth="sm" component="main" className={classes.heroContent}>
         <Typography
           component="h1"
@@ -141,11 +129,10 @@ export default function Pricing() {
           Take the challenges now
         </Typography>
       </Container>
-      {/* End hero unit */}
+      {/* End */}
       <Container maxWidth="md" component="main">
         <Grid container spacing={5} alignItems="flex-end">
           {languages.map(lang => (
-            // Enterprise card is full width at sm breakpoint
             <Grid
               item
               key={lang.title}
@@ -172,6 +159,7 @@ export default function Pricing() {
                     fullWidth
                     variant={lang.buttonVariant}
                     color="primary"
+                    onClick={() => changeUrl(lang)}
                   >
                     {lang.buttonText}
                   </Button>
@@ -184,22 +172,20 @@ export default function Pricing() {
       {/* Footer */}
       <Container maxWidth="md" component="footer" className={classes.footer}>
         <Grid container spacing={4} justify="space-evenly">
-          {footers.map(footer => (
-            <Grid item xs={6} sm={3} key={footer.title}>
-              <Typography variant="h6" color="textPrimary" gutterBottom>
-                {footer.title}
-              </Typography>
-              <ul>
-                {footer.description.map(item => (
-                  <li key={item}>
-                    <Link href="#" variant="subtitle1" color="textSecondary">
-                      {item}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </Grid>
-          ))}
+          <span>
+            Made with
+            <FavoriteIcon
+              style={{ color: blue[500], marginBottom: "-6px" }}
+            />{" "}
+            by{" "}
+            <a
+              style={{ textDecoration: "none" }}
+              href="https://www.linkedin.com/in/mayank-vikesh-kumar-sharma-73978270/"
+              target="_blank"
+            >
+              Mayank Vikesh Kumar Sharma
+            </a>
+          </span>
         </Grid>
         <Box mt={5}></Box>
       </Container>
