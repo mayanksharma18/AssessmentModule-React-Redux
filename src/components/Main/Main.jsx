@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Box,
   Container,
@@ -8,107 +8,96 @@ import {
   Card,
   CardHeader,
   CardMedia,
-  CardActions
-} from "@material-ui/core";
-import StarIcon from "@material-ui/icons/StarBorder";
-import { makeStyles } from "@material-ui/core/styles";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import { blue } from "@material-ui/core/colors";
-import images from "../../utils/imageStore";
+  CardActions,
+} from '@material-ui/core';
+import StarIcon from '@material-ui/icons/StarBorder';
+import { makeStyles } from '@material-ui/core/styles';
+import images from '../../utils/imageStore';
+import Footer from '../Footer/Footer';
 
-const useStyles = makeStyles(theme => ({
-  "@global": {
+const useStyles = makeStyles((theme) => ({
+  '@global': {
     ul: {
       margin: 0,
       padding: 0,
-      listStyle: "none"
-    }
+      listStyle: 'none',
+    },
   },
   appBar: {
     borderBottom: `1px solid ${theme.palette.divider}`,
     backgroundImage:
-      "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,212,255,1) 0%, rgba(4,26,236,1) 66%)",
-    color: "white"
+      'linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,212,255,1) 0%, rgba(4,26,236,1) 66%)',
+    color: 'white',
   },
   toolbar: {
-    flexWrap: "wrap"
+    flexWrap: 'wrap',
   },
   toolbarTitle: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   link: {
-    margin: theme.spacing(1, 1.5)
+    margin: theme.spacing(1, 1.5),
   },
   heroContent: {
-    padding: theme.spacing(8, 0, 6)
+    padding: theme.spacing(8, 0, 6),
   },
   cardHeader: {
     backgroundColor:
-      theme.palette.type === "light"
+      theme.palette.type === 'light'
         ? theme.palette.grey[200]
-        : theme.palette.grey[700]
+        : theme.palette.grey[700],
   },
   media: {
     height: 0,
-    paddingTop: "56.25%", // 16:9
-    paddingBottom: "50px"
+    paddingTop: '56.25%', // 16:9
+    paddingBottom: '50px',
   },
-  footer: {
-    borderTop: `1px solid ${theme.palette.divider}`,
-    marginTop: theme.spacing(8),
-    paddingTop: theme.spacing(3),
-    paddingBottom: theme.spacing(3),
-    [theme.breakpoints.up("sm")]: {
-      paddingTop: theme.spacing(6),
-      paddingBottom: theme.spacing(6)
-    }
-  }
 }));
 
 const languages = [
   {
-    title: "React",
-    buttonText: "Take React Quiz",
-    buttonVariant: "outlined",
-    image: `${images.react}`
+    title: 'React',
+    buttonText: 'Take React Quiz',
+    buttonVariant: 'outlined',
+    image: `${images.react}`,
   },
   {
-    title: "JavaScript",
-    subheader: "Most popular",
-    buttonText: "Start the quiz",
-    buttonVariant: "contained",
-    image: `${images.javascript}`
+    title: 'JavaScript',
+    subheader: 'Most popular',
+    buttonText: 'Start the quiz',
+    buttonVariant: 'contained',
+    image: `${images.javascript}`,
   },
   {
-    title: "Node.Js",
-    buttonText: "Take Node Quiz",
-    buttonVariant: "outlined",
-    image: `${images.node}`
-  }
+    title: 'Node.Js',
+    buttonText: 'Take Node Quiz',
+    buttonVariant: 'outlined',
+    image: `${images.node}`,
+  },
 ];
 const paths = [
   {
-    title: "React",
-    path: "/quiz/react"
+    title: 'React',
+    path: '/quiz/react',
   },
   {
-    title: "JavaScript",
-    path: "/quiz/javascript"
+    title: 'JavaScript',
+    path: '/quiz/javascript',
   },
   {
-    title: "Node.Js",
-    path: "/quiz/nodejs"
-  }
+    title: 'Node.Js',
+    path: '/quiz/nodejs',
+  },
 ];
 
 export default function Main(props) {
-  const changeUrl = lang => {
-    const pathName = paths.filter(i => i.title === lang.title);
+  const changeUrl = (lang) => {
+    const pathName = paths.filter((i) => i.title === lang.title);
     props.history.push(`${pathName[0].path}`);
   };
   const classes = useStyles();
   return (
-    <React.Fragment>
+    <>
       {/* Main Title */}
       <Container maxWidth="sm" component="main" className={classes.heroContent}>
         <Typography
@@ -132,21 +121,21 @@ export default function Main(props) {
       {/* End */}
       <Container maxWidth="md" component="main">
         <Grid container spacing={5} alignItems="flex-end">
-          {languages.map(lang => (
+          {languages.map((lang) => (
             <Grid
               item
               key={lang.title}
               xs={12}
-              sm={lang.title === "JavaScript" ? 12 : 6}
+              sm={lang.title === 'JavaScript' ? 12 : 6}
               md={4}
             >
               <Card>
                 <CardHeader
                   title={lang.title}
                   subheader={lang.subheader}
-                  titleTypographyProps={{ align: "center" }}
-                  subheaderTypographyProps={{ align: "center" }}
-                  action={lang.title === "JavaScript" ? <StarIcon /> : null}
+                  titleTypographyProps={{ align: 'center' }}
+                  subheaderTypographyProps={{ align: 'center' }}
+                  action={lang.title === 'JavaScript' ? <StarIcon /> : null}
                   className={classes.cardHeader}
                 />
                 <CardMedia
@@ -170,26 +159,8 @@ export default function Main(props) {
         </Grid>
       </Container>
       {/* Footer */}
-      <Container maxWidth="md" component="footer" className={classes.footer}>
-        <Grid container spacing={4} justify="space-evenly">
-          <span>
-            Made with
-            <FavoriteIcon
-              style={{ color: blue[500], marginBottom: "-6px" }}
-            />{" "}
-            by{" "}
-            <a
-              style={{ textDecoration: "none" }}
-              href="https://www.linkedin.com/in/mayank-vikesh-kumar-sharma-73978270/"
-              target="_blank"
-            >
-              Mayank Vikesh Kumar Sharma
-            </a>
-          </span>
-        </Grid>
-        <Box mt={5}></Box>
-      </Container>
+      <Footer />
       {/* End footer */}
-    </React.Fragment>
+    </>
   );
 }

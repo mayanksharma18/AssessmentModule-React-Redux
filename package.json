@@ -5,7 +5,9 @@
   "dependencies": {
     "@material-ui/core": "^4.0.0",
     "@material-ui/icons": "^3.0.2",
+    "@material-ui/lab": "^4.0.0-alpha.55",
     "axios": "^0.18.0",
+    "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.0.3",
@@ -20,7 +22,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "proxy": "http://localhost:3001",
   "eslintConfig": {
@@ -39,6 +43,11 @@
     ]
   },
   "devDependencies": {
-    "eslint-plugin-react-hooks": "^4.0.4"
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.3",
+    "eslint-plugin-react-hooks": "^4.0.4",
+    "prettier": "^2.0.5"
   }
 }

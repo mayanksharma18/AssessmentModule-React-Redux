@@ -1,12 +1,8 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { fetchData } from '../../actions/action';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import LinearProgress from '@material-ui/core/LinearProgress';
-import { questions } from '../Data';
-import Modal from '../Modal';
-import ImgMediaCard from '../Results';
 import {
   Card,
   CardContent,
@@ -16,31 +12,35 @@ import {
   Radio,
   RadioGroup,
   FormControlLabel,
-  FormControl
+  FormControl,
 } from '@material-ui/core/';
+import Alert from '@material-ui/lab/Alert';
+import { fetchData } from '../../actions/action';
+import Modal from './Modal';
+import Results from '../Results';
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     ...theme.mixins.gutters(),
     paddingTop: theme.spacing.unit * 2,
     paddingBottom: theme.spacing.unit * 2,
-    margin: 15
+    margin: 15,
   },
   card: {
     minWidth: 250,
-    margin: 80
+    margin: 80,
   },
   bullet: {
     display: 'inline-block',
     margin: '0 2px',
-    transform: 'scale(0.8)'
+    transform: 'scale(0.8)',
   },
   title: {
-    fontSize: 28
+    fontSize: 28,
   },
   pos: {
-    marginBottom: 12
-  }
+    marginBottom: 12,
+  },
 });
 
 class Quiz extends React.Component {
@@ -49,66 +49,93 @@ class Quiz extends React.Component {
     result: null,
     count: 0,
     completed: 0,
-    right: 5
+    right: 5,
+    noOptionSelected: false,
   };
+
   componentDidMount() {
     // this.props.fetchData();
   }
-  
-  handleChange = e => {
-    let value = e.target.value;
+
+  handleChange = (e) => {
+    const { value } = e.target;
     this.setState({
-      currentSelection: value
+      currentSelection: value,
     });
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
-
-    if (this.state.currentSelection === questions[this.state.count].right) {
+    const { currentSelection, count, completed, right } = this.state;
+    if (!currentSelection) {
+      this.setState({ noOptionSelected: true });
+      return;
+    }
+    if (currentSelection === this.props.questions[count].right) {
       this.setState({
         result: true,
-        completed: this.state.completed + 20
+        completed: completed + 20,
+        noOptionSelected: false,
       });
     } else {
       this.setState({
         result: false,
-        right: this.state.right - 1,
-        completed: this.state.completed + 20
+        right: right - 1,
+        completed: completed + 20,
+        noOptionSelected: false,
       });
     }
   };
 
   nextQuestion = () => {
-    this.setState({
+    this.setState((prevState) => ({
       currentSelection: '',
       result: null,
-      count: this.state.count + 1
-    });
+      count: prevState.count + 1,
+    }));
   };
 
   retake = () => {
     this.setState({
       count: 0,
-      completed: 0
+      completed: 0,
     });
   };
 
+  renderModal = () => {
+    const { count, result } = this.state;
+    const { questions } = this.props;
+    if (result === null) {
+      return null;
+    }
+    return result ? (
+      <Modal
+        desc={questions[count].description}
+        data={result}
+        next={this.nextQuestion}
+      />
+    ) : (
+      <Modal
+        desc={questions[count].description}
+        data={result}
+        next={this.nextQuestion}
+      />
+    );
+  };
+
   render() {
-    document.body.style.background = 'linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%)';
-    const index = this.state.count;
-    const { classes } = this.props;
+    document.body.style.background =
+      'linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%)';
+    const { count, right, completed, noOptionSelected } = this.state;
+    const { classes, questions } = this.props;
     return (
       <div>
-        {this.state.count === 5 ? (
-          <ImgMediaCard retake={this.retake} score={this.state.right} />
+        {count === 5 ? (
+          <Results retake={this.retake} score={right} />
         ) : (
           <Card className={classes.card}>
             <div>
-              <LinearProgress
-                variant='determinate'
-                value={this.state.completed}
-              />
+              <LinearProgress variant="determinate" value={completed} />
               <br />
             </div>
             <CardContent>
@@ -116,23 +143,23 @@ class Quiz extends React.Component {
                 <Paper className={classes.root} elevation={1}>
                   <Typography
                     style={{ fontFamily: 'Montserrat', fontSize: '30px' }}
-                    variant='h5'
-                    component='h3'
+                    variant="h5"
+                    component="h3"
                     className={classes.title}
-                    color='primary'
+                    color="primary"
                     gutterBottom
                   >
-                    {questions[index].question}
+                    {questions[count].question}
                   </Typography>
                 </Paper>
                 <Paper className={classes.root} elevation={1}>
                   <form onSubmit={this.handleSubmit}>
                     <FormControl
-                      component='fieldset'
+                      component="fieldset"
                       className={classes.formControl}
                     >
                       <RadioGroup onChange={this.handleChange}>
-                        {questions[index].answer.map(e => (
+                        {questions[count].answer.map((e) => (
                           <FormControlLabel
                             value={e}
                             control={<Radio />}
@@ -142,31 +169,22 @@ class Quiz extends React.Component {
                       </RadioGroup>
                       <Button
                         style={{ fontFamily: 'Montserrat' }}
-                        type='submit'
-                        variant='contained'
+                        type="submit"
+                        variant="contained"
                         className={classes.button}
                       >
                         Submit
                       </Button>
+                      {noOptionSelected && (
+                        <div style={{ marginTop: '12px' }}>
+                          <Alert severity="error">No option selected.</Alert>
+                        </div>
+                      )}
                     </FormControl>
                   </form>
                 </Paper>
               </div>
-              {this.state.result === null ? (
-                false
-              ) : this.state.result ? (
-                <Modal
-                  desc={questions[index].description}
-                  data={this.state.result}
-                  next={this.nextQuestion}
-                />
-              ) : (
-                <Modal
-                  desc={questions[index].description}
-                  data={this.state.result}
-                  next={this.nextQuestion}
-                />
-              )}
+              {this.renderModal()}
             </CardContent>
           </Card>
         )}
@@ -174,10 +192,10 @@ class Quiz extends React.Component {
     );
   }
 }
-const mapDispatchToProps = dispatch =>
+const mapDispatchToProps = (dispatch) =>
   bindActionCreators(
     {
-      fetchData
+      fetchData,
     },
     dispatch
   );
