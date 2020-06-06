@@ -15,6 +15,7 @@ import {
   FormControl,
 } from '@material-ui/core/';
 import Alert from '@material-ui/lab/Alert';
+import ReactCountdownClock from 'react-countdown-clock';
 import { fetchData } from '../../actions/action';
 import Modal from './Modal';
 import Results from '../Results';
@@ -25,6 +26,8 @@ const styles = (theme) => ({
     paddingTop: theme.spacing.unit * 2,
     paddingBottom: theme.spacing.unit * 2,
     margin: 15,
+    display: 'flex',
+    justifyContent: 'space-between',
   },
   card: {
     minWidth: 250,
@@ -98,6 +101,7 @@ class Quiz extends React.Component {
   retake = () => {
     this.setState({
       count: 0,
+      right: 5,
       completed: 0,
     });
   };
@@ -121,6 +125,17 @@ class Quiz extends React.Component {
         next={this.nextQuestion}
       />
     );
+  };
+
+  handleOnCompelte = () => {
+    if (this.state.right === 5) {
+      this.setState({
+        right: 0,
+      });
+    }
+    this.setState({
+      count: 5,
+    });
   };
 
   render() {
@@ -182,6 +197,15 @@ class Quiz extends React.Component {
                       )}
                     </FormControl>
                   </form>
+                  <div style={{ marginRight: '100px', marginTop: '25px' }}>
+                    <ReactCountdownClock
+                      seconds={60}
+                      color="#32CCBC"
+                      alpha={0.9}
+                      size={100}
+                      onComplete={() => this.handleOnCompelte()}
+                    />
+                  </div>
                 </Paper>
               </div>
               {this.renderModal()}

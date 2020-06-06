@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Typography } from '@material-ui/core';
+import ReactCountdownClock from 'react-countdown-clock';
 import Quiz from '../ReusableComponents/Quiz';
-import questions from '../JS';
+import questions from '../DataSets/JsQuestions';
 import Loader from '../ReusableComponents/Loader';
+// import Timer from '../ReusableComponents/Timer';
 
 const JavaScriptQuiz = () => {
   const [progress, setProgress] = useState(20);
@@ -33,7 +35,15 @@ const JavaScriptQuiz = () => {
           </Typography>
         </div>
       ) : (
-        <Quiz questions={questions} />
+        <>
+          {/* <ReactCountdownClock
+            seconds={120}
+            color="#de4747"
+            alpha={0.9}
+            size={100}
+          /> */}
+          <Quiz questions={questions} />
+        </>
       )}
     </div>
   );
